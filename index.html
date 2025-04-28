@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PassWord Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!--wrapper-->
+    <div
+      class="w-[100vw] h-[100vh] flex flex-col items-center justify-center bg-[linear-gradient(56deg,_rgba(0,_0,_255,_1)_11%,_rgba(76,_124,_163,_1)_39%,_rgba(104,_104,_175,_1)_75%)]"
+    >
+      <!--heading-->
+      <h1
+        class="heading text-white uppercase tracking-[2px] text-center leading-[1.2] font-bold text-3xl"
+      >
+        Password Generator
+      </h1>
+
+      <!--display container-->
+      <div
+        class="display-container relative bg-dkviolet rounded-[1rem] border-b-[0.35rem] border-solid border-ltviolet my-[1rem] mx-0 pt-[0.35rem] w-[450px]"
+      >
+        <input
+          readonly
+          placeholder="PASSWORD"
+          class="display bg-transparent w-[80%] py-[1.15rem] text-vbyellow placeholder:text-vbyellow placeholder:text-[1.5rem] placeholder:leading-[30px] placeholder:uppercase font-[600] text-[1.5rem] leading-[30px] tracking-[1px] pr-[3.25rem] border-none focus:outline-none mx-auto block"
+          data-passwordDisplay
+        />
+
+        <button
+          data-copy
+          class="absolute top-[50%] right-[1.5rem] -translate-y-[50%]"
+        >
+          <span data-copyMsg class="tooltip"></span>
+          <img
+            src="./images/copy.svg"
+            alt="copy"
+            width="23"
+            height="23"
+            class="copyBtn bg-transparen"
+          />
+        </button>
+      </div>
+
+      <!--password length section-->
+      <div
+        class="input-container w-[40%] bg-dkviolet rounded-[1rem] p-[2rem] border-b-[0.35rem] border-solid border-ltviolet"
+      >
+        <!--heading section-->
+        <div class="length-continer flex flex-row justify-between items-center">
+          <p class="text-white text-[1.5rem]">Password Length</p>
+          <p data-lengthNumber class="text-vbyellow text-[1.5rem]">0</p>
+        </div>
+        <!--slider-->
+        <input
+          type="range"
+          min="1"
+          max="20"
+          class="slider appearance-none w-[100%] cursor-pointer bg-ltviolet rounded-[1rem] mt-[2rem] mb-[1.5rem] bg-[linear-gradient(to_right,_theme(colors.vbviolet),_theme(colors.vbviolet))] h-[0.75rem] bg-no-repeat custom-slider focus:outline-2 focus:outline-vbyellow focus:outline"
+          step="1"
+          data-lengthSlider
+        />
+
+        <!--checkboxes-->
+        <div class="flex items-center my-[1rem] gap-y-4 gap-x-[1rem]">
+          <input
+            type="checkbox"
+            id="uppercase"
+            class="appearance-none w-[20px] h-[20px] border-[1px] solid border-vbcyan cursor-pointer relative rounded-[0.35rem] checked:bg-vbcyan checked:before:content-['✔'] checked:before:absolute checked:before:-top-[3.5px] checked:before:left-[50%] checked:before:translate-x-[-50%]"
+          />
+          <label
+            for="uppercase"
+            class="text-white text-[1.25rem] tracking-[0.75px]"
+            >Includes Uppercase Letter</label
+          >
+        </div>
+        <div class="flex items-center my-[1rem] gap-y-4 gap-x-[1rem]">
+          <input
+            type="checkbox"
+            id="lowercase"
+            class="appearance-none w-[20px] h-[20px] border-[1px] solid border-vbcyan cursor-pointer relative rounded-[0.35rem] checked:bg-vbcyan checked:before:content-['✔'] checked:before:absolute checked:before:-top-[3.5px] checked:before:left-[50%] checked:before:translate-x-[-50%]"
+          />
+          <label
+            for="lowercase"
+            class="text-white text-[1.25rem] tracking-[0.75px]"
+            >Includes Lowercase Letter</label
+          >
+        </div>
+        <div class="flex items-center my-[1rem] gap-y-4 gap-x-[1rem]">
+          <input
+            type="checkbox"
+            id="numbers"
+            class="appearance-none w-[20px] h-[20px] border-[1px] solid border-vbcyan cursor-pointer relative rounded-[0.35rem] checked:bg-vbcyan checked:before:content-['✔'] checked:before:absolute checked:before:-top-[3.5px] checked:before:left-[50%] checked:before:translate-x-[-50%]"
+          />
+          <label
+            for="numbers"
+            class="text-white text-[1.25rem] tracking-[0.75px]"
+            >Includes Numbers</label
+          >
+        </div>
+        <div class="flex items-center my-[1rem] gap-y-4 gap-x-[1rem]">
+          <input
+            type="checkbox"
+            id="symbols"
+            class="appearance-none w-[20px] h-[20px] border-[1px] solid border-vbcyan cursor-pointer relative rounded-[0.35rem] checked:bg-vbcyan checked:before:content-['✔'] checked:before:absolute checked:before:-top-[3.5px] checked:before:left-[50%] checked:before:translate-x-[-50%]"
+          />
+          <label
+            for="symbols"
+            class="text-white text-[1.25rem] tracking-[0.75px]"
+            >Includes Symbols</label
+          >
+        </div>
+
+        <!--Strength Section-->
+        <div
+          class="strength-container flex flex-row justify-between items-center mt-[1.75rem] mb-[2rem]"
+        >
+          <p class="text-white text-[1.5rem]">Strength</p>
+          <div class="circle indicator" data-indicator></div>
+        </div>
+        <button
+          class="generate-button w-[100%] p-[1rem] bg-vbviolet text-center rounded-[0.75rem] border-b-[0.35rem] border-solid border-vbyellow uppercase tracking-[1px] text-vbyellow font-[600] text-[1.35rem]"
+        >
+          Generate Password
+        </button>
+      </div>
+      <!--generate password-->
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
+<!--1:41:00-->
